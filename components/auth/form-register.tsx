@@ -1,13 +1,10 @@
 "use client";
 
-import { signUpCredentials } from "@/lib/actions";
 import Link from "next/link";
-import { useFormState } from "react-dom";
 import Button from "../button";
+import { FormRegisterProps } from "@/interface/appManagement";
 
-export default function FormRegister() {
-  const [state, formAction] = useFormState(signUpCredentials, null);
-
+export default function FormRegister({ state, formAction }: FormRegisterProps) {
   return (
     <form action={formAction} className="space-y-6">
       {state?.message && (
@@ -110,5 +107,3 @@ export default function FormRegister() {
     </form>
   );
 }
-
-

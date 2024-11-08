@@ -1,8 +1,8 @@
 "use client";
 
-import FormRegister from "@/components/auth/form-register";
+import FormRegister from "@app/components/auth/form-register";
 import { useFormState } from "react-dom";
-import { signUpCredentials } from "@/lib/actions";
+import { signUpCredentials } from "@app/lib/actions";
 
 function Page() {
   const [state, formAction] = useFormState(signUpCredentials, null);

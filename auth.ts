@@ -1,8 +1,8 @@
 import NextAuth from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { prisma } from "./lib/prisma";
+import { prisma } from "@app/lib/prisma";
 import Credentials from "next-auth/providers/credentials";
-import { signInScheme } from "@/lib/zod";
+import { signInScheme } from "@app/lib/zod";
 import { compareSync } from "bcrypt-ts";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({

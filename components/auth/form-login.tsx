@@ -1,12 +1,12 @@
 "use client";
 
-import { signUpCredentials } from "@/lib/actions";
+import { signInCredentials } from "@/lib/actions";
 import Link from "next/link";
 import { useFormState } from "react-dom";
 import Button from "../button";
 
 export default function FormLogin() {
-  const [state, formAction] = useFormState(signUpCredentials, null);
+  const [state, formAction] = useFormState(signInCredentials, null);
 
   return (
     <form action={formAction} className="space-y-6">
@@ -57,7 +57,7 @@ export default function FormLogin() {
         </div>
       </div>
       <Button
-        name="Register"
+        name="Sig In"
         type="submit"
         className="w-full text-white bg-blue-700 font-medium rounded-lg px-5 py-2.5 text-center uppercase hover:bg-blue-800"
       />
@@ -65,7 +65,7 @@ export default function FormLogin() {
         Don&apos;t have an account yet?
         <Link href="/register">
           <span className="font-medium pl-1 text-blue-600 hover:text-blue-700">
-            Sign in
+            Sign Up
           </span>
         </Link>
       </p>

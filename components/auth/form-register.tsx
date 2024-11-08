@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Button from "../button";
-import { FormRegisterProps } from "@/interface/appManagement";
+import { FormRegisterProps } from "@/types/appManagement";
 
 export default function FormRegister({ state, formAction }: FormRegisterProps) {
   return (

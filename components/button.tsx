@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import { ButtonTypes } from "@/interface/appManagement";
+import { ButtonTypes } from "@/types/appManagement";
 
 export default function Button(props: ButtonTypes) {
   const { pending } = useFormStatus();

@@ -1,7 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ClickOutside from "@app/components/ClickOutside";
+
+import img2 from "@app/public/images/user/user-02.png"
+import img1 from "@app/public/images/user/user-01.png"
 
 const DropdownMessage = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -73,7 +76,7 @@ const DropdownMessage = () => {
                     <Image
                       width={112}
                       height={112}
-                      src={"/images/user/user-02.png"}
+                      src={img2}
                       alt="User"
                       style={{
                         width: "auto",
@@ -100,7 +103,7 @@ const DropdownMessage = () => {
                     <Image
                       width={112}
                       height={112}
-                      src={"/images/user/user-01.png"}
+                      src={img1}
                       alt="User"
                       style={{
                         width: "auto",
@@ -181,7 +184,7 @@ const DropdownMessage = () => {
                     <Image
                       width={112}
                       height={112}
-                      src={"/images/user/user-02.png"}
+                      src={img2}
                       alt="User"
                       style={{
                         width: "auto",

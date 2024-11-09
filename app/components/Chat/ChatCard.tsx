@@ -2,9 +2,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { Chat } from "@/types/chat";
 
+import img1 from "@app/public/images/user/user-01.png"
+import img2 from "@app/public/images/user/user-02.png"
+import img3 from "@app/public/images/user/user-03.png"
+import img4 from "@app/public/images/user/user-04.png"
+import img5 from "@app/public/images/user/user-05.png"
+
 const chatData: Chat[] = [
   {
-    avatar: "/images/user/user-01.png",
+    avatar: img1,
     name: "Devid Heilo",
     text: "How are you?",
     time: 12,
@@ -12,7 +18,7 @@ const chatData: Chat[] = [
     dot: 3,
   },
   {
-    avatar: "/images/user/user-02.png",
+    avatar: img2,
     name: "Henry Fisher",
     text: "Waiting for you!",
     time: 12,
@@ -20,7 +26,7 @@ const chatData: Chat[] = [
     dot: 1,
   },
   {
-    avatar: "/images/user/user-04.png",
+    avatar: img4,
     name: "Jhon Doe",
     text: "What's up?",
     time: 32,
@@ -28,7 +34,7 @@ const chatData: Chat[] = [
     dot: 3,
   },
   {
-    avatar: "/images/user/user-05.png",
+    avatar: img5,
     name: "Jane Doe",
     text: "Great",
     time: 32,
@@ -36,7 +42,7 @@ const chatData: Chat[] = [
     dot: 6,
   },
   {
-    avatar: "/images/user/user-01.png",
+    avatar: img1,
     name: "Jhon Doe",
     text: "How are you?",
     time: 32,
@@ -44,7 +50,7 @@ const chatData: Chat[] = [
     dot: 3,
   },
   {
-    avatar: "/images/user/user-03.png",
+    avatar: img3,
     name: "Jhon Doe",
     text: "How are you?",
     time: 32,
@@ -79,9 +85,8 @@ const ChatCard = () => {
                 }}
               />
               <span
-                className={`absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full border-2 border-white ${
-                  chat.dot === 6 ? "bg-meta-6" : `bg-meta-${chat.dot}`
-                } `}
+                className={`absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full border-2 border-white ${chat.dot === 6 ? "bg-meta-6" : `bg-meta-${chat.dot}`
+                  } `}
               ></span>
             </div>
 

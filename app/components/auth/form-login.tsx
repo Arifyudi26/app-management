@@ -1,13 +1,11 @@
 
 "use client";
 
-import { signInCredentials } from "@app/lib/actions";
 import Link from "next/link";
-import { useFormState } from "react-dom";
 import Button from "../button";
+import { FormLoginProps } from "@/types/appManagement";
 
-export default function FormLogin() {
-  const [state, formAction] = useFormState(signInCredentials, null);
+export default function FormLogin({ state, formAction }: FormLoginProps) {
 
   return (
     <form action={formAction} >

@@ -1,5 +1,7 @@
+import { StaticImageData } from "next/image";
+
 export type Chat = {
-  avatar: string;
+  avatar: StaticImageData | string; // Mengizinkan StaticImageData untuk impor Next.js
   name: string;
   text: string;
   time: number;

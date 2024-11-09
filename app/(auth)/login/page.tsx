@@ -1,3 +1,7 @@
+"use client";
+
+import { signInCredentials } from "@app/lib/actions";
+import { useFormState } from "react-dom";
 import FormLogin from "@app/components/auth/form-login";
 import Link from "next/link";
 import Image from "next/image";
@@ -5,6 +9,8 @@ import logo1 from "@app/public/images/logo/logo.svg"
 import logo2 from "@app/public/images/logo/logo-dark.svg"
 
 function page() {
+  const [state, formAction] = useFormState(signInCredentials, null);
+
   return (
     <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
       <div className="flex flex-wrap items-center">
@@ -164,7 +170,7 @@ function page() {
               Sign In to TailAdmin
             </h2>
 
-            <FormLogin />
+            <FormLogin state={state} formAction={formAction} />
           </div>
         </div>
       </div>

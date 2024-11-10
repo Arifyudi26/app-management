@@ -43,4 +43,15 @@ export type FormLoginProps = {
 };
 
 
+// export type User = {
+//   user: {
+//     name: string;
+//     email: string;
+//     image: string | null;
+//     id: string;
+//     role: string;
+//   };
+//   expires: string;
+// };
+
 

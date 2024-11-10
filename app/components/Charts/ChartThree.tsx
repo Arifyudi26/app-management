@@ -1,10 +1,9 @@
+"use client";
 import { ApexOptions } from "apexcharts";
-import React from "react";
-import ReactApexChart from "react-apexcharts";
+import React ,{useEffect,useState}from "react";
+import dynamic from "next/dynamic";
 
-interface ChartThreeState {
-  series: number[];
-}
+const ReactApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const options: ApexOptions = {
   chart: {
@@ -51,6 +50,13 @@ const options: ApexOptions = {
 
 const ChartThree: React.FC = () => {
   const series = [65, 34, 12, 56];
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true); 
+  }, []);
+
+  if (!isClient) return null;
 
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pb-5 pt-7.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-5">

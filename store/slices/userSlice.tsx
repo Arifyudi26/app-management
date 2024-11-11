@@ -19,9 +19,6 @@ const initialState: UserState = {
   loading: true,
 };
 
-console.log(initialState);
-
-
 const userSlice = createSlice({
   name: 'user',
   initialState,

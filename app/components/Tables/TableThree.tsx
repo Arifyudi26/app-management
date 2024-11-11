@@ -9,9 +9,14 @@ type TableColumn<T> = {
 type TableProps<T> = {
   data: T[];
   columns: TableColumn<T>[];
+  emptyText?: string;
 };
 
-const TableThree = <T,>({ data, columns }: TableProps<T>) => {
+const TableThree = <T,>({
+  data,
+  columns,
+  emptyText = "No data available",
+}: TableProps<T>) => {
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="max-w-full overflow-x-auto">
@@ -21,7 +26,9 @@ const TableThree = <T,>({ data, columns }: TableProps<T>) => {
               {columns.map((column, index) => (
                 <th
                   key={index}
-                  className={`px-4 py-4 font-medium text-black dark:text-white ${column.className || ""}`}
+                  className={`px-4 py-4 font-medium text-black dark:text-white ${
+                    column.className || ""
+                  }`}
                 >
                   {column.header}
                 </th>
@@ -29,18 +36,33 @@ const TableThree = <T,>({ data, columns }: TableProps<T>) => {
             </tr>
           </thead>
           <tbody>
-            {data.map((item, rowIndex) => (
-              <tr key={rowIndex}>
-                {columns.map((column, colIndex) => (
-                  <td
-                    key={colIndex}
-                    className={`border-b border-[#eee] px-4 py-5 dark:border-strokedark ${column.className || ""}`}
-                  >
-                    {column.accessor(item)}
-                  </td>
-                ))}
+            {data.length > 0 ? (
+              data.map((item, rowIndex) => {
+                return (
+                  <tr key={rowIndex}>
+                    {columns.map((column, colIndex) => (
+                      <td
+                        key={colIndex}
+                        className={`border-b border-[#eee] px-4 py-5 dark:border-strokedark ${
+                          column.className || ""
+                        }`}
+                      >
+                        {column.accessor(item)}
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })
+            ) : (
+              <tr>
+                <td
+                  colSpan={columns.length}
+                  className="px-4 py-5 text-center text-gray-500"
+                >
+                  {emptyText}
+                </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

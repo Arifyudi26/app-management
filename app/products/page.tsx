@@ -1,72 +1,41 @@
+import { getProducts } from "../lib/data/getProduct";
+import { formatDate } from "../lib/utils";
 import { Metadata } from "next";
 import DefaultLayout from "@app/components/Layouts/DefaultLayout";
 import Breadcrumb from "@app/components/Breadcrumbs/Breadcrumb";
 import TableThree from "@app/components/Tables/TableThree";
-import { Package } from "@/types/package";
+import { PkgProducts } from "@/types/package";
 
 export const metadata: Metadata = {
- title:
-   "Products",
- description: "products",
+  title: "Products",
+  description: "products",
 };
 
-const packageData: Package[] = [
+const columns = [
   {
-    name: "Free package",
-    price: 0.0,
-    invoiceDate: `Jan 13,2023`,
-    status: "Paid",
-  },
-  {
-    name: "Standard Package",
-    price: 59.0,
-    invoiceDate: `Jan 13,2023`,
-    status: "Paid",
-  },
-  {
-    name: "Business Package",
-    price: 99.0,
-    invoiceDate: `Jan 13,2023`,
-    status: "Unpaid",
-  },
-  {
-    name: "Standard Package",
-    price: 59.0,
-    invoiceDate: `Jan 13,2023`,
-    status: "Pending",
-  },
- ];
- 
- const columns = [
-  {
-    header: "Package",
-    accessor: (item: Package) => (
-      <div>
-        <h5 className="font-medium text-black dark:text-white">{item.name}</h5>
-        <p className="text-sm">${item.price}</p>
-      </div>
+    header: "Name",
+    accessor: (item: PkgProducts) => (
+      <p className="text-black dark:text-white">{item.name}</p>
     ),
   },
   {
-    header: "Invoice date",
-    accessor: (item: Package) => (
-      <p className="text-black dark:text-white">{item.invoiceDate}</p>
+    header: "Price",
+    accessor: (item: PkgProducts) => (
+      <p className="text-black dark:text-white">${item.price}</p>
     ),
   },
   {
-    header: "Status",
-    accessor: (item: Package) => (
-      <p
-        className={`inline-flex rounded-full bg-opacity-10 px-3 py-1 text-sm font-medium ${
-          item.status === "Paid"
-            ? "bg-success text-success"
-            : item.status === "Unpaid"
-            ? "bg-danger text-danger"
-            : "bg-warning text-warning"
-        }`}
-      >
-        {item.status}
+    header: "Creted At",
+    accessor: (item: PkgProducts) => (
+      <p className="text-black dark:text-white">
+        {formatDate(item.createdAt.toString(), "MMMM d, yyyy")}
       </p>
+    ),
+  },
+  {
+    header: "Created By",
+    accessor: (item: PkgProducts) => (
+      <p className="text-black dark:text-white">{item.user.name}</p>
     ),
   },
   {
@@ -79,18 +48,19 @@ const packageData: Package[] = [
       </div>
     ),
   },
- ];
+];
 
-function page() {
+async function page() {
+  const products = await getProducts();
+
   return (
-   <DefaultLayout>
+    <DefaultLayout>
       <Breadcrumb pageName="Tables" />
-
       <div className="flex flex-col gap-10">
-      <TableThree data={packageData} columns={columns} />
+        <TableThree data={products || []} columns={columns} />
       </div>
     </DefaultLayout>
-  )
+  );
 }
 
-export default page
+export default page;

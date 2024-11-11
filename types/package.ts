@@ -1,6 +1,14 @@
-export type Package = {
+export type PkgUsers = {
+  name: string | null;
+  email: string | null;
+  role: string;
+};
+
+export type PkgProducts = {
   name: string;
   price: number;
-  invoiceDate: string;
-  status: string;
+  createdAt: string | Date;
+  user: {
+    name: string| null;
+  };
 };
